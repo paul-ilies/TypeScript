@@ -1,8 +1,16 @@
-function add(n1: number, n2: number) {
-    return n1 + n2;
-}
+// unknown type
+let userInput: unknown;
 
-function printResult(num: number) {
-    console.log("Result: " + num);
+userInput = 5;
+userInput = "max";
+// // error
+// let userName: string;
+// userName = userInput;
+
+
+// never type
+
+function generateError(messasge: string, code: number): never {
+    throw { message: messasge, errorCode: code }
 }
-printResult(add(5, 12))
+generateError("An error occured", 500)
