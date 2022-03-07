@@ -1,16 +1,17 @@
-// unknown type
-let userInput: unknown;
-
-userInput = 5;
-userInput = "max";
-// // error
-// let userName: string;
-// userName = userInput;
+// type guards
 
 
-// never type
 
-function generateError(messasge: string, code: number): never {
-    throw { message: messasge, errorCode: code }
+
+type Combinable = string | number;
+type Numeric = number | boolean;
+type Universal = Combinable & Numeric;
+
+function add(a: Combinable, b: Combinable) {
+    // type guard
+    if (typeof a === "string" || typeof b === "string") {
+        return a.toString() + b.toString();
+    }
+    return a + b
 }
-generateError("An error occured", 500)
+
